@@ -5,11 +5,8 @@ RUN corepack enable
 
 FROM base AS prod
 WORKDIR /app
-COPY .npmrc ./
-COPY package*.json ./
-COPY pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
 COPY . .
+RUN pnpm install --frozen-lockfile
 RUN pnpm build
 
 FROM base
