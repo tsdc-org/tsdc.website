@@ -1,0 +1,13 @@
+services:
+  tsdc_website:
+    environment:
+      MODE: production
+      DATABASE_URL: ${DATABASE_URL}
+      TG_USER: ${TG_USER}
+      TG_TOKEN: ${TG_TOKEN}
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4001:3000"

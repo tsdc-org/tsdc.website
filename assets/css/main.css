@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+    --color-accent: var(--color-emerald-700)
+}
+
+* {
+    font-family: "Bona Nova", sans-serif;
+    font-variant-ligatures: no-historical-ligatures;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+    @apply text-white cursor-crosshair;
+} *::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'EB Garamond', serif;
+    @apply font-bold!;
+}
+
+*:not(h1,h2,h3) {
+    @apply sm:text-[14px] text-[12px]
+}
+
+html {
+    @apply overflow-hidden print:overflow-scroll max-w-dvw bg-[#191919]
+}
+
+body {
+    @apply w-dvw h-dvh print:h-fit overflow-scroll bg-[#191919] flex flex-col items-center max-w-dvw
+}
+
+button {
+    @apply print:hidden w-fit px-[32px] h-[38px] cursor-nw-resize! flex items-center transition-all text-sm font-black justify-center border-[1px] hover:border-white border-white/25 border-dashed text-nowrap
+}
+
+button[icon] {
+    @apply p-0 w-[38px] *:text-2xl! h-[38px]! not-italic!;
+}
+
+button:disabled {
+    @apply opacity-50! hover:opacity-50! cursor-not-allowed!
+}
+
+a {
+    @apply cursor-nw-resize! underline opacity-50 hover:opacity-100
+}
