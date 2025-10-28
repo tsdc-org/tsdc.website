@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-    --color-accent: var(--color-emerald-700)
+    --color-accent: var(--color-emerald-700);
+    --color-primary: #191919;
 }
 
 * {
@@ -9,7 +10,8 @@
     font-variant-ligatures: no-historical-ligatures;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;     /* Firefox */
-    @apply text-white cursor-crosshair;
+    cursor: crosshair;
+    @apply text-white;
 } *::-webkit-scrollbar {
     display: none;  /* Chrome, Safari and Opera */
 }
@@ -24,15 +26,15 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 html {
-    @apply overflow-hidden print:overflow-scroll max-w-dvw bg-[#191919]
+    @apply overflow-hidden print:overflow-scroll max-w-dvw bg-primary
 }
 
 body {
-    @apply w-dvw h-dvh print:h-fit overflow-scroll bg-[#191919] flex flex-col items-center max-w-dvw
+    @apply w-dvw h-dvh print:h-fit bg-primary flex flex-col items-center max-w-dvw overflow-hidden scroll-smooth
 }
 
 button {
-    @apply print:hidden w-fit px-[32px] h-[38px] cursor-nw-resize! flex items-center transition-all text-sm font-black justify-center border-[1px] hover:border-white border-white/25 border-dashed text-nowrap
+    @apply print:hidden w-fit px-[32px] h-[38px] cursor-nw-resize! flex items-center transition-all text-[14px] font-black justify-center border-[1px] hover:border-white border-white/25 border-dashed text-nowrap
 }
 
 button[icon] {
@@ -45,4 +47,14 @@ button:disabled {
 
 a {
     @apply cursor-nw-resize! underline opacity-50 hover:opacity-100
+}
+
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
 }

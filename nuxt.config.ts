@@ -9,15 +9,15 @@ export default defineNuxtConfig({
         head: {
             charset: 'utf-8',
             viewport: 'width=device-width, initial-scale=1',
-            title: 'The Software Developer Company',
+            title: 'The Software Development Company',
             meta: [
                 { property: 'business:contact_data:locality', content: 'Lipetsk' },
                 { property: 'business:contact_data:region', content: 'Lipetsk region' },
                 { property: 'business:contact_data:postal_code', content: '398005' },
                 { property: 'business:contact_data:country_name', content: 'Russian Federation' },
                 { name: 'description', content: 'Команда профессионалов, создающих элегантные и эффективные программные решения для бизнеса и не только' },
-                { name: 'author', content: 'The Software Developer Company' },
-                { name: 'copyright', content: `The Software Developer Company @ ${new Date().getFullYear()}` },
+                { name: 'author', content: 'The Software Development Company' },
+                { name: 'copyright', content: `The Software Development Company @ ${new Date().getFullYear()}` },
             ],
             link: [
                 { rel: 'icon', type: 'image/svg', href: '/favicon.svg' }

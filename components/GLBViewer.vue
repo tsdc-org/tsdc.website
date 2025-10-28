@@ -1,13 +1,13 @@
 <script setup lang="ts">
 
     import * as THREE from 'three'
-    import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-    import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+    import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+    import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
     const props = defineProps<{ src?: string }>()
     const root = ref<HTMLElement | null>(null)
     const canvas = ref<HTMLCanvasElement | null>(null)
-    const loaded = ref(false)
+    const loaded = useState('glb:loaded', () => false)
 
     let scene: THREE.Scene | null = null
     let camera: THREE.PerspectiveCamera | null = null
@@ -65,7 +65,7 @@
         if (props.src && group) { 
             
             if (!group) return
-            group.traverse((obj: THREE.Mesh) => {
+            group.traverse((obj: any) => {
                 if (obj.geometry) obj.geometry.dispose()
                 if (obj.material) {
                     const mat = obj.material
@@ -73,12 +73,13 @@
                     else mat.dispose && mat.dispose()
                 }
             })
-            while (group.children.length) group.remove(group.children[0])
+            while (group.children.length) group.remove(group.children[0]!)
             mixer = null; loaded.value = false
-        
+            
             try {
                 const loader = new GLTFLoader(); 
                 const gltf = await loader.loadAsync(props.src)
+
 
                 group.add(gltf.scene)
 
@@ -124,7 +125,6 @@
                                 }
                             `,
                         })
-                        shader.flatShading = true
                         shader.side = THREE.DoubleSide
                         obj.material = shader
                     }
